@@ -1,4 +1,4 @@
-import LoginPage from '@/pages/login';
+import LoginPage from '@/pages/login-page';
 import React from 'react';
 
 function Login() {
