@@ -1,5 +1,5 @@
 'use client';
-import { useLoginMutation } from '@/lib/features/auth/login-api-slice';
+import { useLoginMutation } from '@/lib/features/auth/auth-api-slice';
 import { useFormik } from 'formik';
 import React from 'react';
 
