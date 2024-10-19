@@ -1,7 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import loginApi from './features/auth/auth-api-slice';
+import authSlice from './features/auth/auth-slice';
 
-const rootReducer = combineReducers({ loginApi: loginApi.reducer });
+const rootReducer = combineReducers({
+  loginApi: loginApi.reducer,
+  auth: authSlice.reducer,
+});
 
 export const makeStore = () => {
   return configureStore({
