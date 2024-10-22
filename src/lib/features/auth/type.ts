@@ -22,4 +22,11 @@ export interface ResponseData<T> {
 export interface LoginBody {
   email: string;
   password: string;
+  isPersistent: boolean;
+}
+
+export interface SignUpBody {
+  email: string;
+  password: string;
+  rePassword: string;
 }

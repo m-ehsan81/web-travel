@@ -7,7 +7,7 @@ function LoginPage() {
   const [fetchLogin] = useLoginMutation();
 
   const formik = useFormik({
-    initialValues: { email: '', password: '' },
+    initialValues: { email: '', password: '', isPersistent: false },
     onSubmit: (values) => fetchLogin(values),
   });
 
@@ -21,7 +21,16 @@ function LoginPage() {
         placeholder="password"
         type="password"
       />
-      <button type="submit">submit</button>
+      <label htmlFor="isPersistent-checkbox">isPersistent</label>
+      <input
+        id="isPersistent-checkbox"
+        type="checkbox"
+        {...getFieldProps('isPersistent')}
+      />
+      <br />
+      <button type="submit" className="bg-slate-600">
+        submit
+      </button>
     </form>
   );
 }

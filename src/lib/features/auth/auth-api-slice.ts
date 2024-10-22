@@ -1,17 +1,16 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { LoginBody, ResLoginData, ResponseData } from './type';
+import { createApi } from '@reduxjs/toolkit/query/react';
+import { LoginBody, ResLoginData, ResponseData, SignUpBody } from './type';
 import { setCookie } from 'cookies-next';
 import { setCookieOnlogin } from './auth-slice';
+import { baseQueryWithReauth } from './auth';
 
 export const loginApi = createApi({
   reducerPath: 'loginApi',
-  baseQuery: fetchBaseQuery({
-    baseUrl: 'https://smh1381.bsite.net/api/User/Accounts',
-  }),
+  baseQuery: baseQueryWithReauth,
   endpoints: (builder) => ({
     login: builder.mutation<ResponseData<ResLoginData>, LoginBody>({
       query: (body) => ({
-        url: 'Login',
+        url: 'User/Accounts/Login',
         method: 'POST',
         body,
       }),
@@ -31,8 +30,15 @@ export const loginApi = createApi({
         }
       },
     }),
+    signUp: builder.mutation<any, SignUpBody>({
+      query: (body) => ({
+        url: 'User/Accounts/SignUp',
+        method: 'POST',
+        body,
+      }),
+    }),
   }),
 });
 
-export const { useLoginMutation } = loginApi;
+export const { useLoginMutation, useSignUpMutation } = loginApi;
 export default loginApi;

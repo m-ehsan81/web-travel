@@ -8,7 +8,7 @@ import {
 import { adjustUsedToken, authTokenChange, logoutUser } from './auth-slice';
 
 export const baseQuery = fetchBaseQuery({
-  baseUrl: 'https://smh1381.bsite.net/api/User',
+  baseUrl: process.env.NEXT_PUBLIC_BASE_URL,
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as RootState).auth.token;
     if (token) {
