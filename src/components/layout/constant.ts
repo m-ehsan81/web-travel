@@ -1,38 +1,32 @@
 export const layoutData = [
   {
-    id: 1,
     title: 'پرواز',
-    link: '#',
+    url: '#',
     icon: 'iconoir:airplane',
   },
   {
-    id: 2,
     title: 'قطار',
-    link: '#',
+    url: '#',
     icon: 'mynaui:train',
   },
   {
-    id: 3,
     title: 'اتوبوس',
-    link: '#',
+    url: '#',
     icon: 'solar:bus-linear',
   },
   {
-    id: 4,
     title: 'تورها ',
-    link: '#',
+    url: '#',
     icon: 'tabler:world-search',
   },
   {
-    id: 5,
     title: 'پشتیبانی',
-    link: '#',
+    url: '#',
     icon: 'lucide:headset',
   },
   {
-    id: 6,
     title: 'عضویت',
-    link: '/login',
+    url: '/login',
     icon: 'ri:user-line',
   },
 ];
