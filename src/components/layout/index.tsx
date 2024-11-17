@@ -5,7 +5,7 @@ import NovaLogo from '../nova-logo';
 import { Icon } from '@iconify/react';
 import { NavbarItemProps } from './type';
 import { useRouter } from 'next/navigation';
-import LoginPage from '../pages/login';
+import Auth from '../pages/auth';
 
 function NavbarItem(props: NavbarItemProps) {
   const router = useRouter();
@@ -51,7 +51,7 @@ function Layout({ children }: { children: React.ReactNode }) {
         </ul>
       </nav>
 
-      <LoginPage showModal={showModal} setShowModal={setShowModal} />
+      <Auth showModal={showModal} setShowModal={setShowModal} />
 
       <div>{children}</div>
     </div>
