@@ -4,18 +4,14 @@ export interface TokenType {
 }
 
 export interface ResLoginData {
-  email: string;
-  id: number;
-  name: string | null;
-  role: 'Customer' | 'Admin';
-  token: TokenType;
+  token: string;
+  refreshToken: string;
 }
 
 export interface ResponseData<T> {
   data: T;
-  errorType: string | null;
   isSuccess: boolean;
-  message: string | null;
+  detail: string | null;
   statusCode: number;
 }
 

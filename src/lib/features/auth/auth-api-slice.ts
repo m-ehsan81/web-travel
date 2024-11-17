@@ -17,12 +17,12 @@ export const loginApi = createApi({
       onQueryStarted: async (arg, { dispatch, queryFulfilled }) => {
         try {
           const { data } = await queryFulfilled;
-          setCookie('access-token', data.data.token.token);
-          setCookie('refresh-token', data.data.token.refreshToken);
+          setCookie('access-token', data.data.token);
+          setCookie('refresh-token', data.data.refreshToken);
           dispatch(
             setCookieOnlogin({
-              accessToken: data.data.token.token,
-              refreshToken: data.data.token.refreshToken,
+              accessToken: data.data.token,
+              refreshToken: data.data.refreshToken,
             }),
           );
         } catch (error) {

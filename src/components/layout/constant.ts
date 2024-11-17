@@ -1,18 +1,8 @@
 export const layoutData = [
   {
-    title: 'پرواز',
+    title: 'بلیط',
     url: '#',
-    icon: 'iconoir:airplane',
-  },
-  {
-    title: 'قطار',
-    url: '#',
-    icon: 'mynaui:train',
-  },
-  {
-    title: 'اتوبوس',
-    url: '#',
-    icon: 'solar:bus-linear',
+    icon: 'solar:ticket-linear',
   },
   {
     title: 'تورها ',
@@ -23,10 +13,5 @@ export const layoutData = [
     title: 'پشتیبانی',
     url: '#',
     icon: 'lucide:headset',
-  },
-  {
-    title: 'عضویت',
-    url: '/login',
-    icon: 'ri:user-line',
   },
 ];

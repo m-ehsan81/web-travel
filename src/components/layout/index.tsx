@@ -9,7 +9,7 @@ import Auth from '../pages/auth';
 
 function NavbarItem(props: NavbarItemProps) {
   const router = useRouter();
-  const { icon, title, url, onClickItem } = props;
+  const { icon, title, url } = props;
 
   const clickHandler = () => {
     router.push(url);
@@ -17,12 +17,9 @@ function NavbarItem(props: NavbarItemProps) {
 
   return (
     <li>
-      <button
-        className="flex items-center gap-1"
-        onClick={onClickItem ? onClickItem : clickHandler}
-      >
+      <button className="flex items-center gap-1" onClick={clickHandler}>
         <Icon icon={icon} fontSize={24} />
-        <span className="text-xl">{title}</span>
+        <span className="text-[18px]">{title}</span>
       </button>
     </li>
   );
@@ -37,18 +34,25 @@ function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <div>
-      <nav className="flex items-center justify-between bg-[#142D4D] px-10 py-5 text-white">
+      <nav className="flex items-center gap-6 bg-white px-10 py-5 text-white shadow-md">
         <NovaLogo />
 
-        <ul className="flex items-center gap-10">
+        <ul className="flex flex-grow items-center gap-10 rounded-[32px] bg-[#142D4D] px-10 py-5">
+          <button className="flex flex-grow items-center gap-1">
+            <Icon icon="lineicons:search-1" fontSize={24} />
+            <span className="text-[18px]">جست و جو</span>
+          </button>
           {layoutData.map((item, index) => (
-            <NavbarItem
-              key={index}
-              {...item}
-              onClickItem={item.url === '/login' ? loginHandler : undefined}
-            />
+            <NavbarItem key={index} {...item} />
           ))}
         </ul>
+
+        <button
+          className="rounded-[32px] bg-[#142D4D] px-8 py-5 text-[18px]"
+          onClick={loginHandler}
+        >
+          ورود / ثبت نام
+        </button>
       </nav>
 
       <Auth showModal={showModal} setShowModal={setShowModal} />
