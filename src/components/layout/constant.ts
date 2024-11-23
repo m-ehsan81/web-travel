@@ -1,7 +1,7 @@
 export const layoutData = [
   {
     title: 'بلیط',
-    url: '#',
+    url: '/admin',
     icon: 'solar:ticket-linear',
   },
   {
