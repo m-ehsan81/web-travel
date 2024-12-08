@@ -1,31 +1,7 @@
-import { Button } from 'flowbite-react';
+import Landing from '@/components/pages/landing';
 
 function page() {
-  return (
-    <div>
-      <Button className="m-4">Click me</Button>
-      <Button className="m-4">Click me</Button>
-      <Button className="m-4">Click me</Button>
-      <Button className="m-4">Click me</Button>
-      <Button className="m-4">Click me</Button>
-      <Button className="m-4">Click me</Button>
-      <Button className="m-4">Click me</Button>
-      <Button className="m-4">Click me</Button>
-      <Button className="m-4">Click me</Button>
-      <Button className="m-4">Click me</Button>
-      <Button className="m-4">Click me</Button>
-      <Button className="m-4">Click me</Button>
-      <Button className="m-4">Click me</Button>
-      <Button className="m-4">Click me</Button>
-      <Button className="m-4">Click me</Button>
-      <Button className="m-4">Click me</Button>
-      <Button className="m-4">Click me</Button>
-      <Button className="m-4">Click me</Button>
-      <Button className="m-4">Click me</Button>
-      <Button className="m-4">Click me</Button>
-      <Button className="m-4">Click me</Button>
-    </div>
-  );
+  return <Landing />;
 }
 
 export default page;
