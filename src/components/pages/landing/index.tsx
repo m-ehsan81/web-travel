@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Icon } from '@iconify/react';
 import TourSvg from '@/components/svg-component/tour-svg';
 import TravelSvg from '@/components/svg-component/travel-svg';
+import AirPlane from '@/components/svg-component/air-plane';
 
 function Landing() {
   return (
@@ -77,6 +78,38 @@ function Landing() {
             <TravelSvg />
           </div>
         </div>
+      </div>
+
+      <div className="mt-[120px] flex items-end justify-between rounded-2xl bg-[#32A6D5] p-8 text-white">
+        <div>
+          <h3 className="text-[32px] font-bold">پرواز لحظه آخری</h3>
+          <p className="mb-[36px] mt-[22px] text-[20px] font-bold">
+            اگه برای سفرت عجله داری ، حتما به لیست لحظه آخری ها یه سر بزن!
+          </p>
+          <Link
+            href="/"
+            className="m-auto flex w-[184px] items-center justify-center gap-10 rounded-[40px] bg-white py-4 text-[#333]"
+          >
+            <span className="text-[20px] font-normal">رزور بلیط</span>
+            <Icon icon="icons8:left-round" fontSize="24px" />
+          </Link>
+        </div>
+
+        <AirPlane />
+      </div>
+
+      <div className="mt-20 text-[#142D4D]">
+        <h2 className="mb-[46px] text-center text-[32px] font-bold">
+          چرا آژانس اینترنتی نوا سفر؟
+        </h2>
+
+        <div
+          className="w-full px-[60px] py-6"
+          style={{
+            boxShadow:
+              '-2px 0px 4px 0px rgba(0, 0, 0, 0.25), 2px 4px 4px 0px rgba(0, 0, 0, 0.25)',
+          }}
+        ></div>
       </div>
 
       {/* <SocialIcons /> */}
