@@ -1,4 +1,4 @@
 export interface OutlineCardProps {
   children: React.ReactNode;
-  label: string;
+  label?: string;
 }

@@ -1,4 +1,6 @@
 import Profile from '@/components/pages/profile';
+import Tickets from '@/components/pages/tickets';
+import AddTicket from '@/components/pages/tickets/addTicket';
 import AddTour from '@/components/pages/tours/addTour';
 import Users from '@/components/pages/users';
 
@@ -26,7 +28,7 @@ export const adminMenuItems: {
   { title: 'تور‌ها', content: AddTour, icon: 'fluent:earth-20-regular' },
   {
     title: 'لیست بلیط‌ها',
-    content: Users,
+    content: AddTicket,
     icon: 'fluent:task-list-square-rtl-16-regular',
   },
   {
