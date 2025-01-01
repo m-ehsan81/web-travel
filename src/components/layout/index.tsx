@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { layoutData } from './constant';
+import { footerItems, layoutData } from './constant';
 import NovaLogo from '../nova-logo';
 import { Icon } from '@iconify/react';
 import { NavbarItemProps } from './type';
@@ -61,6 +61,28 @@ function Layout({ children }: { children: React.ReactNode }) {
       <Auth showModal={showModal} setShowModal={setShowModal} />
 
       <div>{children}</div>
+
+      <div className="m-10 mt-[80px] w-[calc(100%-80px)] rounded-2xl bg-[#142D4D] px-10 py-6">
+        <div className="flex gap-20 text-white">
+          {footerItems.map((item) => (
+            <div key={item.id} className="flex flex-col gap-3">
+              <p className="text-[28px] font-medium">{item.title}</p>
+
+              <div className="flex flex-col gap-1">
+                {item.subMenus.map((sub) => (
+                  <Link
+                    href="#"
+                    key={sub.id}
+                    className="text-[18px] font-medium"
+                  >
+                    {sub.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

@@ -7,6 +7,24 @@ import AirPlane from '@/components/svg-component/air-plane';
 import Image from 'next/image';
 import SeachLanding from './seach-landing';
 
+function MedalCard({
+  description,
+  imageSrc,
+  title,
+}: {
+  title: string;
+  description: string;
+  imageSrc: string;
+}) {
+  return (
+    <div className="flex max-w-[262px] flex-col items-center gap-3">
+      <Image alt="medal" src={imageSrc} width={64} height={64} />
+      <p className="text-center text-[24px] font-bold">{title}</p>
+      <p className="text-center text-[18px] font-medium">{description}</p>
+    </div>
+  );
+}
+
 function Landing() {
   return (
     <div>
@@ -113,12 +131,33 @@ function Landing() {
           </h2>
 
           <div
-            className="w-full px-[60px] py-6"
+            className="flex w-full justify-between rounded-2xl px-[60px] py-6"
             style={{
               boxShadow:
                 '-2px 0px 4px 0px rgba(0, 0, 0, 0.25), 2px 4px 4px 0px rgba(0, 0, 0, 0.25)',
             }}
-          ></div>
+          >
+            <MedalCard
+              imageSrc="/svg/airplane.svg"
+              title="اعتبار"
+              description="معتبرترین عرضه‌کننده محصولات گردشگری در ایران"
+            />
+            <MedalCard
+              imageSrc="/svg/web-services-definition.svg"
+              title="خدمات"
+              description="ارائه تمامی خدمات سفر (پرواز، قطار، اتوبوس، هتل و تور)"
+            />
+            <MedalCard
+              imageSrc="/svg/24-support.svg"
+              title="دسترسی"
+              description="پشتیبانی و همراهی ۲۴ ساعته در تمامی مراحل سفر "
+            />
+            <MedalCard
+              imageSrc="/svg/medal.svg"
+              title="راحتی"
+              description="تجربه دلچسب در سفر خود را با ما به ثمر برسانید"
+            />
+          </div>
         </div>
 
         {/* <SocialIcons /> */}
