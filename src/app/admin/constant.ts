@@ -1,5 +1,4 @@
 import Profile from '@/components/pages/profile';
-import Tickets from '@/components/pages/tickets';
 import AddTicket from '@/components/pages/tickets/addTicket';
 import AddTour from '@/components/pages/tours/addTour';
 import Users from '@/components/pages/users';

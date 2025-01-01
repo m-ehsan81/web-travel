@@ -6,6 +6,7 @@ import { Icon } from '@iconify/react';
 import { NavbarItemProps } from './type';
 import { useRouter } from 'next/navigation';
 import Auth from '../pages/auth';
+import Link from 'next/link';
 
 function NavbarItem(props: NavbarItemProps) {
   const router = useRouter();
@@ -35,7 +36,9 @@ function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div>
       <nav className="flex items-center gap-6 bg-white px-10 py-5 text-white shadow-md">
-        <NovaLogo />
+        <Link href="/">
+          <NovaLogo />
+        </Link>
 
         <ul className="flex flex-grow items-center gap-10 rounded-[32px] bg-[#142D4D] px-10 py-5">
           <button className="flex flex-grow items-center gap-1">
