@@ -54,7 +54,7 @@
     "react-hooks/exhaustive-deps": "warn",
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",
-    "prettier/prettier": "warn",
+    "prettier/prettier": ["warn", { "endOfLine": "auto" }],
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/no-require-imports": "off"
   },
