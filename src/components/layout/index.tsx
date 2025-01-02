@@ -1,12 +1,13 @@
 'use client';
 import React, { useState } from 'react';
-import { footerItems, layoutData } from './constant';
+import { layoutData } from './constant';
 import NovaLogo from '../nova-logo';
 import { Icon } from '@iconify/react';
 import { NavbarItemProps } from './type';
 import { useRouter } from 'next/navigation';
 import Auth from '../pages/auth';
 import Link from 'next/link';
+import Footer from './footer';
 
 function NavbarItem(props: NavbarItemProps) {
   const router = useRouter();
@@ -35,7 +36,7 @@ function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <div>
-      <nav className="flex items-center gap-6 bg-white px-10 py-5 text-white shadow-md">
+      <nav className="fixed top-0 z-[1000] flex w-full items-center gap-6 bg-white px-10 py-5 text-white shadow-md">
         <Link href="/">
           <NovaLogo />
         </Link>
@@ -60,29 +61,9 @@ function Layout({ children }: { children: React.ReactNode }) {
 
       <Auth showModal={showModal} setShowModal={setShowModal} />
 
-      <div>{children}</div>
+      <div className="mt-[107px]">{children}</div>
 
-      <div className="m-10 mt-[80px] w-[calc(100%-80px)] rounded-2xl bg-[#142D4D] px-10 py-6">
-        <div className="flex gap-20 text-white">
-          {footerItems.map((item) => (
-            <div key={item.id} className="flex flex-col gap-3">
-              <p className="text-[28px] font-medium">{item.title}</p>
-
-              <div className="flex flex-col gap-1">
-                {item.subMenus.map((sub) => (
-                  <Link
-                    href="#"
-                    key={sub.id}
-                    className="text-[18px] font-medium"
-                  >
-                    {sub.title}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      <Footer />
     </div>
   );
 }
