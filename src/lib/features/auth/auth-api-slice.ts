@@ -10,7 +10,7 @@ export const loginApi = createApi({
   endpoints: (builder) => ({
     login: builder.mutation<ResponseData<ResLoginData>, LoginBody>({
       query: (body) => ({
-        url: '/SSO/Accounts/Login',
+        url: '/User/Accounts/Login',
         method: 'POST',
         body,
       }),

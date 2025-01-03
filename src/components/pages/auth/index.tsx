@@ -13,6 +13,7 @@ function Auth(props: AuthProps) {
       size="5xl"
       onClose={() => setShowModal(false)}
       dismissible
+      className="z-[1000]"
     >
       <Modal.Body className="login-bg rounded-md bg-cover p-0">
         <div className="h-[600px] w-2/5 bg-[#142D4D] px-[43px] py-6 text-center">

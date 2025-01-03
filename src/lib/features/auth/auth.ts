@@ -33,7 +33,11 @@ export const baseQueryWithReauth: BaseQueryFn<
     store.dispatch(adjustUsedToken(authState.refreshToken as string));
 
     // Try to refresh the token
-    const refreshResult = await baseQuery('/RefreshToken', store, extraOptions);
+    const refreshResult = await baseQuery(
+      '/Accounts/RefreshToken',
+      store,
+      extraOptions,
+    );
 
     if (refreshResult.data) {
       // Store the new tokens

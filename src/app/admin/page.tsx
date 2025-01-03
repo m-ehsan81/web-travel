@@ -8,7 +8,7 @@ import { adminMenuItems } from './constant';
 function Admin() {
   const [selectedIndex, setSelectedIndex] = useState(1);
   return (
-    <div className="mt-[88px] flex items-start gap-6 px-[155px]">
+    <div className="flex items-start gap-6 px-[155px] pt-5">
       <aside className="w-[318px] rounded-2xl border border-solid border-[#6C757D] p-4">
         <ul>
           {adminMenuItems.map((item, index) => (

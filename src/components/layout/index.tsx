@@ -36,7 +36,7 @@ function Layout({ children }: { children: React.ReactNode }) {
 
   return (
     <div>
-      <nav className="fixed top-0 z-[1000] flex w-full items-center gap-6 bg-white px-10 py-5 text-white shadow-md">
+      <nav className="fixed top-0 z-[100] flex w-full items-center gap-6 bg-white px-10 py-5 text-white shadow-md">
         <Link href="/">
           <NovaLogo />
         </Link>
