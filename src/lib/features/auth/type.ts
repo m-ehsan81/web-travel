@@ -26,3 +26,10 @@ export interface SignUpBody {
   password: string;
   rePassword: string;
 }
+
+export interface SignUpRes {
+  isSuccess: boolean;
+  message: string;
+  statusCode: number;
+  errorType: null | string;
+}

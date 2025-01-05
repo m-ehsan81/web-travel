@@ -1,17 +1,26 @@
 'use client';
 import { useSignUpMutation } from '@/lib/features/auth/auth-api-slice';
-import { Checkbox, Label, TextInput } from 'flowbite-react';
+import { Icon } from '@iconify/react/dist/iconify.js';
+import { Checkbox, Label, Modal, TextInput } from 'flowbite-react';
 import { useFormik } from 'formik';
+import { useState } from 'react';
 
 function SignUpPage() {
   const [fetchSignUp] = useSignUpMutation();
+  const [showMessageBox, setShowMessageBox] = useState(false);
   const formik = useFormik({
     initialValues: {
       email: '',
       password: '',
       rePassword: '',
     },
-    onSubmit: (values) => fetchSignUp(values),
+    onSubmit: async (values) => {
+      const res = await fetchSignUp(values).unwrap();
+
+      if (res) {
+        setShowMessageBox(true);
+      }
+    },
   });
 
   const { getFieldProps, handleSubmit } = formik;
@@ -28,21 +37,21 @@ function SignUpPage() {
               // icon={}
               placeholder="ایمیل"
               {...getFieldProps('email')}
-              style={{ backgroundColor: 'transparent' }}
+              style={{ backgroundColor: 'transparent', color: 'white' }}
             />
             <TextInput
               type="password"
               // icon={}
               placeholder="رمز عبور"
               {...getFieldProps('password')}
-              style={{ backgroundColor: 'transparent' }}
+              style={{ backgroundColor: 'transparent', color: 'white' }}
             />
             <TextInput
-              type="rePassword"
+              type="password"
               // icon={}
               placeholder="تکرار رمز عبور"
               {...getFieldProps('rePassword')}
-              style={{ backgroundColor: 'transparent' }}
+              style={{ backgroundColor: 'transparent', color: 'white' }}
             />
           </div>
 
@@ -59,6 +68,28 @@ function SignUpPage() {
           >
             ثبت نام
           </button>
+
+          <Modal
+            show={showMessageBox}
+            size="2xl"
+            onClose={() => setShowMessageBox(false)}
+            dismissible
+            className="z-[1000]"
+          >
+            <Modal.Body className="login-bg rounded-md bg-cover p-0">
+              <div className="flex flex-col items-center justify-center gap-6 bg-[#142D4D] py-6">
+                <Icon icon="fluent-color:mail-20" fontSize={60} />
+                <p className="text-white">
+                  ما یک پیام به ایمیل وارد شده ارسال کرده ایم. لطفا آن را چک
+                  کنید
+                </p>
+
+                <button className="rounded-[40px] bg-[#FC5C04] px-8 py-4 text-white">
+                  تایید و ادامه
+                </button>
+              </div>
+            </Modal.Body>
+          </Modal>
         </div>
       </form>
     </div>
