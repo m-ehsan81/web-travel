@@ -1,5 +1,11 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
-import { LoginBody, ResLoginData, ResponseData, SignUpBody } from './type';
+import {
+  LoginBody,
+  ResLoginData,
+  ResponseData,
+  SignUpBody,
+  SignUpRes,
+} from './type';
 import { setCookie } from 'cookies-next';
 import { setCookieOnlogin } from './auth-slice';
 import { baseQueryWithReauth } from './auth';
@@ -30,7 +36,14 @@ export const loginApi = createApi({
         }
       },
     }),
-    signUp: builder.mutation<any, SignUpBody>({
+    signUp: builder.mutation<SignUpRes, SignUpBody>({
+      query: (body) => ({
+        url: 'User/Accounts/SignUp',
+        method: 'POST',
+        body,
+      }),
+    }),
+    emailConfirmation: builder.mutation<any, { token: string }>({
       query: (body) => ({
         url: 'User/Accounts/SignUp',
         method: 'POST',
@@ -40,5 +53,9 @@ export const loginApi = createApi({
   }),
 });
 
-export const { useLoginMutation, useSignUpMutation } = loginApi;
+export const {
+  useLoginMutation,
+  useSignUpMutation,
+  useEmailConfirmationMutation,
+} = loginApi;
 export default loginApi;

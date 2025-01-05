@@ -26,14 +26,14 @@ function LoginPage() {
               // icon={}
               placeholder="ایمیل"
               {...getFieldProps('email')}
-              style={{ backgroundColor: 'transparent' }}
+              style={{ backgroundColor: 'transparent', color: 'white' }}
             />
             <TextInput
               type="password"
               // icon={}
               placeholder="رمز عبور"
               {...getFieldProps('password')}
-              style={{ backgroundColor: 'transparent' }}
+              style={{ backgroundColor: 'transparent', color: 'white' }}
             />
           </div>
 
