@@ -19,8 +19,16 @@ function Auth(props: AuthProps) {
         <div className="h-[600px] w-2/5 bg-[#142D4D] px-[43px] py-6 text-center">
           <CustomTabs
             tabs={[
-              { id: 1, content: <LoginPage />, title: 'ورود' },
-              { id: 2, content: <SignUpPage />, title: 'ثبت نام' },
+              {
+                id: 1,
+                content: <LoginPage onClose={() => setShowModal(false)} />,
+                title: 'ورود',
+              },
+              {
+                id: 2,
+                content: <SignUpPage onClose={() => setShowModal(false)} />,
+                title: 'ثبت نام',
+              },
             ]}
           />
         </div>

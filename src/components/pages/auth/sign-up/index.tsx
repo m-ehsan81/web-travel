@@ -4,8 +4,9 @@ import { Icon } from '@iconify/react/dist/iconify.js';
 import { Checkbox, Label, Modal, TextInput } from 'flowbite-react';
 import { useFormik } from 'formik';
 import { useState } from 'react';
+import { LoginProps } from '../login/type';
 
-function SignUpPage() {
+function SignUpPage({ onClose }: LoginProps) {
   const [fetchSignUp] = useSignUpMutation();
   const [showMessageBox, setShowMessageBox] = useState(false);
   const formik = useFormik({
@@ -18,6 +19,7 @@ function SignUpPage() {
       const res = await fetchSignUp(values).unwrap();
 
       if (res) {
+        onClose();
         setShowMessageBox(true);
       }
     },
@@ -84,7 +86,10 @@ function SignUpPage() {
                   کنید
                 </p>
 
-                <button className="rounded-[40px] bg-[#FC5C04] px-8 py-4 text-white">
+                <button
+                  className="rounded-[40px] bg-[#FC5C04] px-8 py-4 text-white"
+                  onClick={() => setShowMessageBox(false)}
+                >
                   تایید و ادامه
                 </button>
               </div>

@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { layoutData } from './constant';
 import NovaLogo from '../nova-logo';
 import { Icon } from '@iconify/react';
@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 import Auth from '../pages/auth';
 import Link from 'next/link';
 import Footer from './footer';
+import { useAppSelector } from '@/lib/hooks';
 
 function NavbarItem(props: NavbarItemProps) {
   const router = useRouter();
@@ -30,6 +31,8 @@ function NavbarItem(props: NavbarItemProps) {
 function Layout({ children }: { children: React.ReactNode }) {
   const [showModal, setShowModal] = useState(false);
 
+  const auth = useAppSelector((state) => state.auth);
+
   const loginHandler = () => {
     setShowModal(true);
   };
@@ -51,12 +54,21 @@ function Layout({ children }: { children: React.ReactNode }) {
           ))}
         </ul>
 
-        <button
-          className="rounded-[32px] bg-[#142D4D] px-8 py-5 text-[18px]"
-          onClick={loginHandler}
-        >
-          ورود / ثبت نام
-        </button>
+        {auth.token ? (
+          <Link
+            href="admin"
+            className="rounded-full bg-[#142D4D] p-3 text-white"
+          >
+            <Icon icon="solar:user-outline" fontSize={32} />
+          </Link>
+        ) : (
+          <button
+            className="rounded-[32px] bg-[#142D4D] px-8 py-5 text-[18px]"
+            onClick={loginHandler}
+          >
+            ورود / ثبت نام
+          </button>
+        )}
       </nav>
 
       <Auth showModal={showModal} setShowModal={setShowModal} />

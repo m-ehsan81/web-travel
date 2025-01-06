@@ -1,14 +1,20 @@
 import { useLoginMutation } from '@/lib/features/auth/auth-api-slice';
 import { Checkbox, Label, TextInput } from 'flowbite-react';
 import { useFormik } from 'formik';
-import React from 'react';
+import { LoginProps } from './type';
 
-function LoginPage() {
+function LoginPage({ onClose }: LoginProps) {
   const [fetchLogin] = useLoginMutation();
 
   const formik = useFormik({
     initialValues: { email: '', password: '', isPersistent: false },
-    onSubmit: (values) => fetchLogin(values),
+    onSubmit: async (values) => {
+      const res = await fetchLogin(values).unwrap();
+
+      if (res.isSuccess) {
+        onClose();
+      }
+    },
   });
 
   const { getFieldProps, handleSubmit } = formik;

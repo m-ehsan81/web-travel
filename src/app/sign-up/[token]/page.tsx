@@ -1,43 +1,44 @@
 'use client';
 
-import { useEmailConfirmationMutation } from '@/lib/features/auth/auth-api-slice';
+import { useEffect } from 'react';
+import { useEmailConfirmationQuery } from '@/lib/features/auth/auth-api-slice';
 import { Icon } from '@iconify/react/dist/iconify.js';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 
-async function getToken(params: Promise<{ token: string }>) {
-  return (await params).token;
-}
-
-function SignUp({ params }: { params: Promise<{ token: string }> }) {
-  const [token, setToken] = useState<string | null>(null);
-  const [fetcEmail, { isLoading, isError }] = useEmailConfirmationMutation();
+function SignUp({ params }: { params: { token: string } }) {
+  const { token } = params;
+  const { isLoading, isError } = useEmailConfirmationQuery({ token });
 
   useEffect(() => {
-    const fetchToken = async () => {
-      const resolvedToken = await getToken(params);
-      setToken(resolvedToken);
-      await fetcEmail({ token: resolvedToken });
-    };
-    fetchToken();
-  }, [params, fetcEmail]);
+    if (isError) {
+      console.error('Email confirmation error:', isError);
+    }
+  }, [isError]);
 
   if (isLoading) {
-    return <p>در حال بارگذاری...</p>; // Loading state
+    return (
+      <div className="flex h-[500px] w-full items-center justify-center">
+        <p>در حال بارگذاری...</p>
+      </div>
+    );
   }
 
   if (isError) {
-    return <p>خطا در تأیید ایمیل، لطفاً دوباره تلاش کنید.</p>; // Error state
+    return (
+      <div className="flex h-[500px] w-full items-center justify-center">
+        <p>خطا در تأیید ایمیل، لطفاً دوباره تلاش کنید.</p>
+      </div>
+    );
   }
 
   return (
-    <div>
-      <Icon icon="mdi:tick-circle" color="green" />
+    <div className="flex h-[500px] w-full flex-col items-center justify-center gap-4">
+      <Icon icon="mdi:tick-circle" color="green" fontSize={70} />
       <p>ثبت نام با موفقیت انجام شد</p>
 
-      <p>Post: {token}</p>
-
-      <Link href="/">برگشت به صفحه اصلی</Link>
+      <Link href="/" className="text-blue-700">
+        برگشت به صفحه اصلی
+      </Link>
     </div>
   );
 }

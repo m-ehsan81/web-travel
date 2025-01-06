@@ -1,11 +1,5 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
-import {
-  LoginBody,
-  ResLoginData,
-  ResponseData,
-  SignUpBody,
-  SignUpRes,
-} from './type';
+import { LoginBody, ResponseData, SignUpBody, SignUpRes } from './type';
 import { setCookie } from 'cookies-next';
 import { setCookieOnlogin } from './auth-slice';
 import { baseQueryWithReauth } from './auth';
@@ -14,7 +8,7 @@ export const loginApi = createApi({
   reducerPath: 'loginApi',
   baseQuery: baseQueryWithReauth,
   endpoints: (builder) => ({
-    login: builder.mutation<ResponseData<ResLoginData>, LoginBody>({
+    login: builder.mutation<ResponseData<string>, LoginBody>({
       query: (body) => ({
         url: '/User/Accounts/Login',
         method: 'POST',
@@ -23,12 +17,10 @@ export const loginApi = createApi({
       onQueryStarted: async (arg, { dispatch, queryFulfilled }) => {
         try {
           const { data } = await queryFulfilled;
-          setCookie('access-token', data.data.token);
-          setCookie('refresh-token', data.data.refreshToken);
+          setCookie('access-token', data.data);
           dispatch(
             setCookieOnlogin({
-              accessToken: data.data.token,
-              refreshToken: data.data.refreshToken,
+              accessToken: data.data,
             }),
           );
         } catch (error) {
@@ -43,12 +35,8 @@ export const loginApi = createApi({
         body,
       }),
     }),
-    emailConfirmation: builder.mutation<any, { token: string }>({
-      query: (body) => ({
-        url: 'User/Accounts/SignUp',
-        method: 'POST',
-        body,
-      }),
+    emailConfirmation: builder.query<any, { token: string }>({
+      query: ({ token }) => `User/Accounts/EmailConfirmation?token=${token}`,
     }),
   }),
 });
@@ -56,6 +44,6 @@ export const loginApi = createApi({
 export const {
   useLoginMutation,
   useSignUpMutation,
-  useEmailConfirmationMutation,
+  useEmailConfirmationQuery,
 } = loginApi;
 export default loginApi;
