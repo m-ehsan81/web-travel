@@ -31,7 +31,7 @@ export const loginApi = createApi({
             }),
           );
         } catch (error) {
-          console.error(error);
+          console.log(error);
         }
       },
     }),
