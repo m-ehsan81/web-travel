@@ -1,6 +1,5 @@
 'use client';
 import CustomInput from '@/components/customs/custom-input';
-import { LastSecondCalendar } from './lastSecCalendar';
 import { Select } from 'flowbite-react';
 import { Fragment } from 'react';
 import { TicketCard } from './ticketCrad';
@@ -9,7 +8,7 @@ export const LasetSecond = () => {
   return (
     <div className="mt-[162px] flex flex-nowrap gap-4 px-10">
       <div className="flex w-[564px] flex-col gap-8">
-        <div className="flex gap-2.5 rounded-3xl border border-[#6C757D] p-10">
+        {/* <div className="flex gap-2.5 rounded-3xl border border-[#6C757D] p-10">
           <LastSecondCalendar />
           <LastSecondCalendar />
           <LastSecondCalendar />
@@ -17,7 +16,7 @@ export const LasetSecond = () => {
           <LastSecondCalendar />
           <LastSecondCalendar />
           <LastSecondCalendar />
-        </div>
+        </div> */}
         <div className="flex flex-col gap-2">
           <label className="text-[20px] font-bold text-[#333]">قیمت:</label>
           <div className="flex gap-4">
