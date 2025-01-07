@@ -3,15 +3,13 @@ import Image from 'next/image';
 import { BagIcon } from '../lastSecond/bagIcon';
 import { Button, Checkbox, Label } from 'flowbite-react';
 import { AirplaneIcon } from '../lastSecond/airplane';
-import { usePathname, useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import CustomInput from '@/components/customs/custom-input';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Icon } from './icon';
-import axios from 'axios';
 
 export const Reserve = () => {
   const router = useRouter();
-  const pahtname = usePathname();
   const [user, setUser] = useState({
     latinName: '',
     latinFamilyName: '',
@@ -19,10 +17,6 @@ export const Reserve = () => {
     nationalId: '',
     sex: '',
   });
-
-  useEffect(() => {
-    axios.get();
-  }, []);
 
   const handlSubmit = () => {};
   return (

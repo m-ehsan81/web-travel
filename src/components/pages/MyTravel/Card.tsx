@@ -9,7 +9,7 @@ import { Tooltip } from 'flowbite-react';
 enum ETravelType {
   'train' = 'قطار',
   'airplane' = 'پرواز',
-  'bus' = 'قطار',
+  'bus' = 'اتوبوس',
 }
 
 interface ICard {

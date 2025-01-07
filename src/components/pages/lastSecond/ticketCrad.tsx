@@ -15,7 +15,6 @@ export const TicketCard = () => {
       .then((res) => setX(res))
       .catch((e) => console.log(e));
   }, []);
-  console.log(x);
   return (
     <>
       {x.data?.data?.Airplane.map((item: any, index: number) => (
