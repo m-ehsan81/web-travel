@@ -1,5 +1,11 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
-import { LoginBody, ResponseData, SignUpBody, SignUpRes } from './type';
+import {
+  LoginBody,
+  ResLoginData,
+  ResponseData,
+  SignUpBody,
+  SignUpRes,
+} from './type';
 import { setCookie } from 'cookies-next';
 import { setCookieOnlogin } from './auth-slice';
 import { baseQueryWithReauth } from './auth';
@@ -8,7 +14,7 @@ export const loginApi = createApi({
   reducerPath: 'loginApi',
   baseQuery: baseQueryWithReauth,
   endpoints: (builder) => ({
-    login: builder.mutation<ResponseData<string>, LoginBody>({
+    login: builder.mutation<ResponseData<ResLoginData>, LoginBody>({
       query: (body) => ({
         url: '/User/Accounts/Login',
         method: 'POST',
@@ -17,10 +23,11 @@ export const loginApi = createApi({
       onQueryStarted: async (arg, { dispatch, queryFulfilled }) => {
         try {
           const { data } = await queryFulfilled;
-          setCookie('access-token', data.data);
+          setCookie('access-token', data.data.token);
           dispatch(
             setCookieOnlogin({
-              accessToken: data.data,
+              accessToken: data.data.token,
+              role: data.data.role,
             }),
           );
         } catch (error) {

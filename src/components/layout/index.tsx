@@ -56,7 +56,7 @@ function Layout({ children }: { children: React.ReactNode }) {
 
         {auth.token ? (
           <Link
-            href="admin"
+            href={auth.role === 'Admin' ? '/admin' : '/user'}
             className="rounded-full bg-[#142D4D] p-3 text-white"
           >
             <Icon icon="solar:user-outline" fontSize={32} />

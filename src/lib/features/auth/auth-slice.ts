@@ -4,6 +4,7 @@ import { deleteCookie, getCookie, setCookie } from 'cookies-next';
 const initialState = {
   token: getCookie('access-token'),
   refreshToken: getCookie('refresh-token'),
+  role: '',
   usedToken: getCookie('access-token'),
 };
 
@@ -14,6 +15,7 @@ const authSlice = createSlice({
     setCookieOnlogin: (state, action) => {
       state.token = action.payload.accessToken;
       state.refreshToken = action.payload.refreshToken;
+      state.role = action.payload.role;
     },
     authTokenChange: (state, action) => {
       setCookie('access-token', action.payload.accessToken);

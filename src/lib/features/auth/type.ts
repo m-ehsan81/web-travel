@@ -5,7 +5,7 @@ export interface TokenType {
 
 export interface ResLoginData {
   token: string;
-  refreshToken: string;
+  role: 'Admin' | 'User';
 }
 
 export interface ResponseData<T> {
